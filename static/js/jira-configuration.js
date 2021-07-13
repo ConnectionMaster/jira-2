@@ -5,7 +5,7 @@ const appUrl = document.querySelector('meta[name=public-url]').getAttribute('con
 $('.add-organization-link').click(function (event) {
   event.preventDefault()
 
-  const child = window.open(`${appUrl}/github/redirect?jwt=${encodeURIComponent(params.get('jwt'))}&xdm_e=${encodeURIComponent(params.get('xdm_e'))}`)
+  const child = window.open(`${appUrl}/github/login?jwt=${encodeURIComponent(params.get('jwt'))}&xdm_e=${encodeURIComponent(params.get('xdm_e'))}`)
 
   const interval = setInterval(function () {
     if (child.closed) {
@@ -76,20 +76,28 @@ const statusBtn = document.getElementById('sync-status-modal-btn')
 const retrySpan = document.getElementById('retry-close')
 const statusSpan = document.getElementById('status-close')
 
-retryBtn.onclick = function () {
-  retryModal.style.display = 'block'
+if (retryBtn != null) {
+  retryBtn.onclick = function () {
+    retryModal.style.display = 'block'
+  }
 }
 
-statusBtn.onclick = function () {
-  statusModal.style.display = 'block'
+if (statusBtn != null) {
+  statusBtn.onclick = function () {
+    statusModal.style.display = 'block'
+  }
 }
 
-retrySpan.onclick = function () {
-  retryModal.style.display = 'none'
+if (retrySpan != null) {
+  retrySpan.onclick = function () {
+    retryModal.style.display = 'none'
+  }
 }
 
-statusSpan.onclick = function () {
-  statusModal.style.display = 'none'
+if (statusSpan != null) {
+  statusSpan.onclick = function () {
+    statusModal.style.display = 'none'
+  }
 }
 
 // When the user clicks anywhere outside of the modal, close it
